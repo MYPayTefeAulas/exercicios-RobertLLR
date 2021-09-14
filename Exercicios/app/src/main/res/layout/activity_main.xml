@@ -33,10 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="140dp"
         android:text="Frutas_Verduras"
+        app:layout_constraintBottom_toBottomOf="@+id/btEx1"
         app:layout_constraintStart_toEndOf="@+id/btEx1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/btEx1" />
 
     <Button
         android:id="@+id/btEx3"
@@ -47,5 +47,16 @@
         app:layout_constraintEnd_toEndOf="@+id/btEx1"
         app:layout_constraintStart_toStartOf="@+id/btEx1"
         app:layout_constraintTop_toBottomOf="@+id/btEx1" />
+
+    <Button
+        android:id="@+id/btEx4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Greeter"
+        app:layout_constraintEnd_toEndOf="@+id/btEx2"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/btEx2"
+        app:layout_constraintTop_toBottomOf="@+id/btEx2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

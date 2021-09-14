@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
             val i = Intent (this@MainActivity, PessoasActivity2 :: class.java)
             startActivity(i)
         }
+        binding.btEx4.setOnClickListener {
+            val i = Intent (this@MainActivity, Greeter1Activity :: class.java)
+            startActivity(i)
+        }
 
         setContentView(binding.root)
     }
