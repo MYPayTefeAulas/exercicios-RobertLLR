@@ -65,9 +65,10 @@
         android:id="@+id/btEx5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:text="Rolagem de 3 dados"
-        app:layout_constraintTop_toBottomOf="@+id/btEx3"
-        tools:layout_editor_absoluteX="37dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEx3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
