@@ -16,7 +16,7 @@ class FrutasActivity : AppCompatActivity() {
         binding = ActivityFrutasBinding.inflate(layoutInflater)
 
         binding.btAnalisar.setOnClickListener {
-            binding.txtSaida.text = analisar(binding.txtEntrada.text.toString())
+            binding.txtSaidaPessoa.text = analisar(binding.txtEntrada.text.toString()) //mudar saida
         }
         binding.btVoltarFrutas.setOnClickListener {
             val i = Intent (this@FrutasActivity, MainActivity :: class.java)

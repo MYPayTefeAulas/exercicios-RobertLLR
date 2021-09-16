@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Exercicios">
         <activity
+            android:name=".DadosActivity"
+            android:exported="true" />
+        <activity
             android:name=".Greeter1Activity"
             android:exported="true" />
         <activity

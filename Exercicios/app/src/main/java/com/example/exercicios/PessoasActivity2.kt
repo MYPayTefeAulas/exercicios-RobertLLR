@@ -19,15 +19,15 @@ class PessoasActivity2 : AppCompatActivity() {
 
         binding = ActivityPessoas2Binding.inflate(layoutInflater)
 
-        binding.btImprimir.setOnClickListener {
-            binding.txtSaida.text = imprimePessoa()
+        binding.btImprimirPessoa.setOnClickListener {
+            binding.txtSaidaPessoa.text = imprimePessoa()
         }
 
-        binding.btSalvar.setOnClickListener {
-            nome = binding.txtNome.text.toString()
-            binding.txtNome.text.clear()
-            idade = binding.txtIdade.text.toString().toInt()
-            binding.txtIdade.text.clear()
+        binding.btSalvarPessoa.setOnClickListener {
+            nome = binding.txtNomePessoa.text.toString()
+            binding.txtNomePessoa.text.clear()
+            idade = binding.txtIdadePessoa.text.toString().toInt()
+            binding.txtIdadePessoa.text.clear()
 
             val pessoa = Pessoa(nome,idade)
             listaPessoas.add(pessoa)

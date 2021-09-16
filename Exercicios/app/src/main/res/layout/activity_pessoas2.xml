@@ -7,37 +7,37 @@
     tools:context=".PessoasActivity2">
 
     <TextView
-        android:id="@+id/txtSaida"
+        android:id="@+id/txtSaidaPessoa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btImprimir" />
+        app:layout_constraintTop_toBottomOf="@+id/btImprimirPessoa" />
 
     <Button
-        android:id="@+id/btSalvar"
+        android:id="@+id/btSalvarPessoa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdade" />
+        app:layout_constraintTop_toBottomOf="@+id/txtIdadePessoa" />
 
     <Button
-        android:id="@+id/btImprimir"
+        android:id="@+id/btImprimirPessoa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Imprimir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btSalvar" />
+        app:layout_constraintTop_toBottomOf="@+id/btSalvarPessoa" />
 
     <EditText
-        android:id="@+id/txtIdade"
+        android:id="@+id/txtIdadePessoa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -47,10 +47,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNome" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNomePessoa" />
 
     <EditText
-        android:id="@+id/txtNome"
+        android:id="@+id/txtNomePessoa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
