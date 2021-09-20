@@ -50,6 +50,7 @@ class Greeter1Activity : AppCompatActivity() {
         //----------------------------------------------------------------------------------
         // configurações dos botões segunda parte
         binding.btSalvarGreeter2.setOnClickListener{
+            lateinit var auxFimLista: Pessoa
             erroSalvar = false
             binding.txtSaida2.text = ""
                 for (lista in listaNomes2) {
@@ -63,28 +64,31 @@ class Greeter1Activity : AppCompatActivity() {
                         break
                     }
                 }
-                if (erroSalvar == false) {
+                if (erroSalvar == false&&binding.txtEntradaNome.text.toString()!="") {
+                    if(listaNomes2.size!=0) listaNomes2.removeAt(listaNomes2.size-1)
+
                     listaNomes2.add(Pessoa(
                         binding.txtEntradaNome.text.toString(),
                         binding.txtEntradaIdade.text.toString().toInt()
                     ))
+                    listaNomes2.add(Pessoa("Fim da lista, aperte próximo para voltar ao inicio",0))
                     binding.txtEntradaNome.text.clear()
                     binding.txtEntradaIdade.text.clear()
-                }
+                    binding.txtSaida2.text = "Nome e telefone salvos com sucesso"
+                }else binding.txtSaida2.text = "Digite nome e telefone para poder salvar"
         }
 
         binding.btImprimir2.setOnClickListener{
-           if (listaNomes2.size != 0) {
+           if (listaNomes2.size != 0 &&(listaNomes2.size-1)>indiceAtual2) {
                binding.txtSaida2.text = greeterAtual.greet2(                //Segunda Impressão
                    listaNomes2[indiceAtual2].nome,
                    listaNomes2[indiceAtual2].idade
                )
+               indiceAtual2++
 
-               if (indiceAtual2 == listaNomes2.size - 1) {
-                   indiceAtual2 = 0
-               } else {
-                   indiceAtual2++
-               }
+           }else if(listaNomes2.size-1==indiceAtual2){
+               binding.txtSaida2.text = listaNomes2[indiceAtual2].nome
+               indiceAtual2 = 0
            }else{
                binding.txtSaida2.text = "Não há registro"
            }

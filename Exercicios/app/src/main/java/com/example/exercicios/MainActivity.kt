@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
             val i = Intent (this@MainActivity, DadosActivity :: class.java)
             startActivity(i)
         }
+        binding.btEx6.setOnClickListener {
+            val i = Intent (this@MainActivity, AgendaActivity :: class.java)
+            startActivity(i)
+        }
 
         setContentView(binding.root)
     }

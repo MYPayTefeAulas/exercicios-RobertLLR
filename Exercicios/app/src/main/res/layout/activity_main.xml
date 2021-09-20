@@ -71,4 +71,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btEx3" />
 
+    <Button
+        android:id="@+id/btEx6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:text="Agenda"
+        app:layout_constraintStart_toEndOf="@+id/btEx5"
+        app:layout_constraintTop_toBottomOf="@+id/btEx4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
