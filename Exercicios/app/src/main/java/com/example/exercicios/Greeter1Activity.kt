@@ -50,7 +50,7 @@ class Greeter1Activity : AppCompatActivity() {
         //----------------------------------------------------------------------------------
         // configurações dos botões segunda parte
         binding.btSalvarGreeter2.setOnClickListener{
-            lateinit var auxFimLista: Pessoa
+
             erroSalvar = false
             binding.txtSaida2.text = ""
                 for (lista in listaNomes2) {
@@ -80,10 +80,12 @@ class Greeter1Activity : AppCompatActivity() {
 
         binding.btImprimir2.setOnClickListener{
            if (listaNomes2.size != 0 &&(listaNomes2.size-1)>indiceAtual2) {
-               binding.txtSaida2.text = greeterAtual.greet2(                //Segunda Impressão
+
+               binding.txtSaida2.text = greeterAtual.greet2(
                    listaNomes2[indiceAtual2].nome,
                    listaNomes2[indiceAtual2].idade
-               )
+               )            //Segunda Impressão
+
                indiceAtual2++
 
            }else if(listaNomes2.size-1==indiceAtual2){
