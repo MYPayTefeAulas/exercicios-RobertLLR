@@ -70,10 +70,10 @@
         android:id="@+id/btAgProximo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="96dp"
         android:text="próximo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
 
@@ -96,4 +96,26 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAgenda" />
+
+    <EditText
+        android:id="@+id/txtAgBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="160dp"
+        android:ems="10"
+        android:hint="Nome/Telefone"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
+
+    <Button
+        android:id="@+id/btAgBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="160dp"
+        android:text="Buscar"
+        app:layout_constraintStart_toEndOf="@+id/txtAgBuscar"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ class Greeter1Activity : AppCompatActivity() {
     private var erroSalvar = false
     private lateinit var greeterAtual: GreeterTipo1
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

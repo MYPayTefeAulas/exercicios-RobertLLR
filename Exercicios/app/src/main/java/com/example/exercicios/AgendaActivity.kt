@@ -41,10 +41,14 @@ class AgendaActivity : AppCompatActivity() {
                     binding.txtAgSaida.text = "O nome ${contatoAtual.nome} já consta na lista"
                 }else if(agenda.verificaContatoAg(contatoAtual)==contatoAtual.telefone&&editar==false){
                     binding.txtAgSaida.text = "O telefone ${contatoAtual.telefone} já consta na lista"
-                }else if(editar==true&&agenda.listaVazia()==false) agenda.editarAg(contatoAtual)
+                }else if(editar==true&&agenda.listaVazia()==false){
+                    agenda.editarAg(contatoAtual)
+                    binding.txtAgSaida.text = "Contato modificado"
+                }
             }
             editar = false
         }
+
         binding.btAgDeletar.setOnClickListener {
             if(binding.txtAgNome.text.toString() == "") {
                 binding.txtAgSaida.text = "Nome vazio, CLIQUE EM PROXIMO ANTES DE DELETAR"
@@ -53,12 +57,13 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgSaida.text = "Telefone vazio, CLIQUE EM PROXIMO ANTES DE DELETAR"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
             }else if(editar==true){
-                agenda.deletarAg(contatoAtual)
+                agenda.deletarAg()
             }
             editar = false
         }
 
         binding.btAgProximo.setOnClickListener {
+            binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
             if(agenda.listaVazia()==true){
                 binding.txtAgSaida.text = "Agenda esta vazia"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
@@ -68,6 +73,22 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgTelefone.setText(contatoAtual.telefone)
             }
             editar = true
+        }
+
+        binding.btAgBuscar.setOnClickListener {
+            if(agenda.listaVazia()){
+                binding.txtAgSaida.text = "Agenda esta vazia"
+                binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
+            }else if(agenda.existenciaContato(binding.txtAgBuscar.text.toString())) {
+                contatoAtual = agenda.buscarAg(binding.txtAgBuscar.text.toString())
+                binding.txtAgNome.setText(contatoAtual.nome)
+                binding.txtAgTelefone.setText(contatoAtual.telefone)
+            }else {
+                binding.txtAgSaida.text = "Este contato NÃO existe"
+                binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
+            }
+            editar = true
+            binding.txtAgBuscar.text.clear()
         }
 
         setContentView(binding.root)

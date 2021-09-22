@@ -5,12 +5,20 @@ class Agenda {
     private val listaAgenda = mutableListOf<PessoaAg>()
     private var indiceAtual = -1
 
+    fun numContato():Int{return indiceAtual}
 
-    fun deletarAg(contato:PessoaAg){
+    fun deletarAg(){
         listaAgenda.removeAt(indiceAtual)
         indiceAtual--
     }
-
+    fun buscarAg(contato:String):PessoaAg{
+        indiceAtual = 0
+        for (lista in listaAgenda) {
+            if(contato==lista.nome||contato==lista.telefone) return listaAgenda[indiceAtual]
+            indiceAtual++
+        }
+        return listaAgenda[indiceAtual]
+    }
 
     fun salvarAg(salvarPessoa:PessoaAg){
         listaAgenda.add(salvarPessoa)
@@ -45,15 +53,11 @@ class Agenda {
     fun listaVazia ():Boolean{
         return listaAgenda.size == 0
     }
-//    fun existenciaContatoAg(contato:PessoaAg) : Boolean{
-//        var aux:Boolean=false
-//        for(lista in listaAgenda){
-//            if (lista.nome == contato.nome &&
-//                lista.telefone == contato.telefone ) {
-//                aux = true
-//                break
-//            }
-//        }
-//        return aux
-//    }
+    fun existenciaContato(nt:String): Boolean{
+        for (lista in listaAgenda) {
+            if(nt==lista.nome||nt==lista.telefone) return true
+        }
+        return false
+    }
+
 }
