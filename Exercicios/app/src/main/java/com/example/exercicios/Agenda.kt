@@ -16,6 +16,9 @@ class Agenda {
         listaAgenda.add(salvarPessoa)
         indiceAtual++
     }
+    fun editarAg(contato:PessoaAg){
+        listaAgenda[indiceAtual]=contato
+    }
 
     fun proximoAg() : PessoaAg{
        if(indiceAtual == listaAgenda.size -1){
