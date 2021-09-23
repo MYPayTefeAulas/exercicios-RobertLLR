@@ -58,12 +58,12 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
             }else if(editar==true){
                 agenda.deletarAg()
+                binding.txtAgSaida.text = "Contato deletado"
             }
             editar = false
         }
 
         binding.btAgProximo.setOnClickListener {
-            binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
             if(agenda.listaVazia()==true){
                 binding.txtAgSaida.text = "Agenda esta vazia"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
@@ -73,6 +73,7 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgTelefone.setText(contatoAtual.telefone)
             }
             editar = true
+            binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
         }
 
         binding.btAgBuscar.setOnClickListener {
@@ -83,6 +84,7 @@ class AgendaActivity : AppCompatActivity() {
                 contatoAtual = agenda.buscarAg(binding.txtAgBuscar.text.toString())
                 binding.txtAgNome.setText(contatoAtual.nome)
                 binding.txtAgTelefone.setText(contatoAtual.telefone)
+                binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
             }else {
                 binding.txtAgSaida.text = "Este contato NÃO existe"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))

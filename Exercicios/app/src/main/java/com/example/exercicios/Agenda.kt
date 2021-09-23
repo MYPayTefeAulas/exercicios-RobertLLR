@@ -6,7 +6,6 @@ class Agenda {
     private var indiceAtual = -1
 
     fun numContato():Int{return indiceAtual}
-
     fun deletarAg(){
         listaAgenda.removeAt(indiceAtual)
         indiceAtual--
@@ -19,7 +18,6 @@ class Agenda {
         }
         return listaAgenda[indiceAtual]
     }
-
     fun salvarAg(salvarPessoa:PessoaAg){
         listaAgenda.add(salvarPessoa)
         indiceAtual++
@@ -27,7 +25,6 @@ class Agenda {
     fun editarAg(contato:PessoaAg){
         listaAgenda[indiceAtual]=contato
     }
-
     fun proximoAg() : PessoaAg{
        if(indiceAtual == listaAgenda.size -1){
            indiceAtual = 0
