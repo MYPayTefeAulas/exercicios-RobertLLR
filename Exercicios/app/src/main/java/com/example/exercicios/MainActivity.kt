@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             val i = Intent (this@MainActivity, AgendaActivity :: class.java)
             startActivity(i)
         }
+        binding.btEx8.setOnClickListener {
+            val i = Intent (this@MainActivity, BatalhaRPGActivity :: class.java)
+            startActivity(i)
+        }
 
         setContentView(binding.root)
     }

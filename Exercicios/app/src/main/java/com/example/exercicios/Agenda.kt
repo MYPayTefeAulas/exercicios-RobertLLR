@@ -5,6 +5,7 @@ class Agenda {
     private val listaAgenda = mutableListOf<PessoaAg>()
     private var indiceAtual = -1
 
+
     fun numContato():Int{return indiceAtual}
     fun deletarAg(){
         listaAgenda.removeAt(indiceAtual)

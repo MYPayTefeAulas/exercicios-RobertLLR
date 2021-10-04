@@ -21,7 +21,6 @@ class AgendaActivity : AppCompatActivity() {
 
             val nome = binding.txtAgNome.text.toString()
             val telefone = binding.txtAgTelefone.text.toString()
-            //val novaPessoa = PessoaAg(nome,telefone)
             contatoAtual = PessoaAg(nome,telefone)
 
 
@@ -59,6 +58,7 @@ class AgendaActivity : AppCompatActivity() {
             }else if(editar==true){
                 agenda.deletarAg()
                 binding.txtAgSaida.text = "Contato deletado"
+                binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
             }
             editar = false
         }
@@ -74,6 +74,7 @@ class AgendaActivity : AppCompatActivity() {
             }
             editar = true
             binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
+            binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
         }
 
         binding.btAgBuscar.setOnClickListener {
@@ -85,12 +86,18 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgNome.setText(contatoAtual.nome)
                 binding.txtAgTelefone.setText(contatoAtual.telefone)
                 binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
+                binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
+                binding.txtAgTest.text = "Nome: ${contatoAtual.nome}, telefone: ${contatoAtual.telefone}"
             }else {
                 binding.txtAgSaida.text = "Este contato NÃO existe"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
             }
             editar = true
             binding.txtAgBuscar.text.clear()
+        }
+
+        binding.btAglista.setOnClickListener {
+            //listaView
         }
 
         setContentView(binding.root)

@@ -10,88 +10,79 @@
         android:id="@+id/txtAgenda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Agenda"
+        android:layout_marginTop="24dp"
+        android:text="Agenda:"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtAgNome"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtAgTelefone"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAgenda" />
 
     <EditText
         android:id="@+id/txtAgTelefone"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Telefone"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgNome" />
+        app:layout_constraintStart_toEndOf="@+id/txtAgNome"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgenda" />
 
     <Button
         android:id="@+id/btAgSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="Salvar"
         app:layout_constraintEnd_toStartOf="@+id/btAgDeletar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAgNome" />
 
     <Button
         android:id="@+id/btAgDeletar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:text="Deletar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btAgProximo"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btAgSalvar"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAgNome" />
 
     <Button
         android:id="@+id/btAgProximo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="32dp"
         android:text="próximo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
-
-    <TextView
-        android:id="@+id/txtSaidaAgenda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgenda" />
+        app:layout_constraintStart_toEndOf="@+id/btAgDeletar"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
 
     <TextView
         android:id="@+id/txtAgSaida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,21 +92,55 @@
         android:id="@+id/txtAgBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Nome/Telefone"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/btAgBuscar"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/btAgSalvar" />
 
     <Button
         android:id="@+id/btAgBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
         android:text="Buscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtAgBuscar"
-        app:layout_constraintTop_toBottomOf="@+id/txtAgTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/btAgProximo" />
+
+    <ListView
+        android:id="@+id/listaViewAg"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgBuscar"
+        tools:layout_editor_absoluteX="140dp" />
+
+    <Button
+        android:id="@+id/btAglista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="28dp"
+        android:text="Button"
+        app:layout_constraintEnd_toStartOf="@+id/listaViewAg"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgBuscar" />
+
+    <TextView
+        android:id="@+id/txtAgTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAgBuscar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

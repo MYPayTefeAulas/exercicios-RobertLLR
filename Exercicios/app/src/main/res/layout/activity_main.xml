@@ -14,10 +14,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/btEx1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.034" />
 
     <Button
         android:id="@+id/btEx1"
@@ -80,5 +80,15 @@
         android:text="Agenda"
         app:layout_constraintStart_toEndOf="@+id/btEx5"
         app:layout_constraintTop_toBottomOf="@+id/btEx4" />
+
+    <Button
+        android:id="@+id/btEx8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="Batalha RPG"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
