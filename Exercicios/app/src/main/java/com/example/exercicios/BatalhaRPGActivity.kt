@@ -110,17 +110,23 @@ class BatalhaRPGActivity : AppCompatActivity() {
                 if (arena.danosG1 < 0) {
                     vidaAtualG1 = vidaAtualG1 + arena.danosG1
                     binding.barGuerreiro1.progress = vidaAtualG1
-                    binding.txtBatalhaMensagens.text = "TURNO $vidaAtualG1"
                 }
                 if (arena.danosG2 < 0) {
                     vidaAtualG2 = vidaAtualG2 + arena.danosG2
                     binding.barGuerreiro2.progress = vidaAtualG2
-                    //binding.txtBatalhaMensagens.text = "TURNO $vidaAtualG1 e $vidaAtualG2"
                 }
-
                 binding.txtBatalhaMensagens.text = "TURNO ${arena.turno}!"
-            }else if(vidaAtualG2<0&&vidaAtualG1>0)  binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 1 no turno ${arena.turno}!"
-             else if(vidaAtualG1<0&&vidaAtualG2>0)  binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 2 no turno ${arena.turno}!"
+
+            }else if(vidaAtualG2<0&&vidaAtualG1>0&&arena.turno!=0){
+                binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 1 no turno ${arena.turno}!"
+                arena.turno = 0
+                arena.limpaLista()
+            }
+             else if(vidaAtualG1<0&&vidaAtualG2>0&&arena.turno!=0){
+                binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 2 no turno ${arena.turno}!"
+                arena.turno = 0
+                arena.limpaLista()
+            }
         }
 
         setContentView(binding.root)

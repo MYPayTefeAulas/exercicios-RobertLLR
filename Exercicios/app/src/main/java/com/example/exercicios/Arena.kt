@@ -5,20 +5,27 @@ class Arena(guerreiro1:Guerreiro,guerreiro2:Guerreiro) {
     private val listaBatalhaG2 = mutableListOf<String>()
      var danosG1:Int=0
      var danosG2:Int=0
-    var turno:Int=0
+     var turno:Int=0
+    private var ataqueG1:Int=0
+    private var ataqueG2:Int=0
+    private var defesaG1:Int=0
+    private var defesaG2:Int=0
 
     fun batalha(guerreiro1: Guerreiro,guerreiro2: Guerreiro) {
-        danosG1=guerreiro1.defender(guerreiro1.defesaExtra,guerreiro1.destrezaExtra)-
-                guerreiro2.atacar(guerreiro2.forcaExtra,guerreiro2.destrezaExtra)
-        listaBatalhaG1.add(0,"Danos Recebido: $danosG1\n\n")
-        listaBatalhaG1.add(0,"Defesa: ${guerreiro1.defender(guerreiro1.forcaExtra,guerreiro1.destrezaExtra)}\n")
-        listaBatalhaG1.add(0,"Ataque: ${guerreiro1.atacar(guerreiro1.forcaExtra,guerreiro1.destrezaExtra)}\n")
+        ataqueG1 = guerreiro1.atacar(guerreiro1.forcaExtra,guerreiro1.destrezaExtra)
+        ataqueG2 = guerreiro2.atacar(guerreiro2.forcaExtra,guerreiro2.destrezaExtra)
+        defesaG1 = guerreiro1.defender(guerreiro1.defesaExtra,guerreiro1.destrezaExtra)
+        defesaG2 = guerreiro2.defender(guerreiro2.defesaExtra,guerreiro2.destrezaExtra)
+        danosG1  = defesaG1 - ataqueG2
+        danosG2  = defesaG2 - ataqueG1
 
-        danosG2=guerreiro2.defender(guerreiro2.defesaExtra,guerreiro2.destrezaExtra)-
-                guerreiro1.atacar(guerreiro1.forcaExtra,guerreiro1.destrezaExtra)
+        listaBatalhaG1.add(0,"Danos Recebido: $danosG1\n\n")
+        listaBatalhaG1.add(0,"Defesa: $defesaG1\n")
+        listaBatalhaG1.add(0,"Ataque: $ataqueG1\n")
+
         listaBatalhaG2.add(0,"Danos Recebido: $danosG2\n\n")
-        listaBatalhaG2.add(0,"Defesa: ${guerreiro2.defender(guerreiro2.forcaExtra,guerreiro2.destrezaExtra)}\n")
-        listaBatalhaG2.add(0,"Ataque: ${guerreiro2.atacar(guerreiro2.forcaExtra,guerreiro2.destrezaExtra)}\n")
+        listaBatalhaG2.add(0,"Defesa: $defesaG2\n")
+        listaBatalhaG2.add(0,"Ataque: $ataqueG2\n")
         turno++
     }
     fun resultadoG1():String{
@@ -39,10 +46,9 @@ class Arena(guerreiro1:Guerreiro,guerreiro2:Guerreiro) {
         return resultado
     }
 
-    fun danos(defesa:Int,ataque:Int):Int = defesa - ataque
-
-    fun danosBoolean(danos:Int):Boolean{
-        if(danos<0)return true
-        return false
+    fun limpaLista(){
+        listaBatalhaG1.clear()
+        listaBatalhaG2.clear()
     }
+
 }
