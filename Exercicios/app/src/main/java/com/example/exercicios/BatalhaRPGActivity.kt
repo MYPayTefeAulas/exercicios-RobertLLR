@@ -29,6 +29,8 @@ class BatalhaRPGActivity : AppCompatActivity() {
 
 
         binding.btBatalhaIniciar.setOnClickListener {
+            guerreiro1.zerarHabilidades()
+            guerreiro2.zerarHabilidades()
             if(binding.txtBatalhaNome.text.toString()==""){
                 binding.txtBatalhaMensagens.text = "De um NOME ao seu Guerreiro"
             }else if(binding.txtBatalhaVida.text.toString()==""){
@@ -93,7 +95,8 @@ class BatalhaRPGActivity : AppCompatActivity() {
                 binding.barGuerreiro1.progress = guerreiro1.vida
                 binding.barGuerreiro2.progress = guerreiro1.vida
 
-
+                binding.txtBatalhaResultadoG1.text = "Histórico de Batalha"
+                binding.txtBatalhaResultadoG2.text = "Histórico de Batalha"
                 binding.txtBatalhaMensagens.text = "INICIO DA LUTA, Clique em ATACAR!!"
             }
 
@@ -104,20 +107,19 @@ class BatalhaRPGActivity : AppCompatActivity() {
 
                 arena.batalha(guerreiro1, guerreiro2)
 
-                binding.txtBatalhaResultadoG1.text = arena.resultadoG1()
-                binding.txtBatalhaResultadoG2.text = arena.resultadoG2()
+                binding.txtBatalhaResultadoG1.text = arena.resultado(arena.listaBatalhaG1)
+                binding.txtBatalhaResultadoG2.text = arena.resultado(arena.listaBatalhaG2)
                 binding.barGuerreiro1.progress = guerreiro1.vida
                 binding.barGuerreiro2.progress = guerreiro2.vida
 
-                //binding.txtBatalhaMensagens.text = "${guerreiro1.vida} ${guerreiro2.vida}"
                 binding.txtBatalhaMensagens.text = "TURNO ${arena.turno}!"
 
-            }else if(guerreiro2.vida<0&&guerreiro1.vida>0&&arena.turno!=0){
+            }else if(guerreiro2.vida<=0&&guerreiro1.vida>0&&arena.turno!=0){
                 binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 1 no turno ${arena.turno}!"
                 arena.turno = 0
                 arena.limpaLista()
             }
-             else if(guerreiro1.vida<0&&guerreiro2.vida>0&&arena.turno!=0){
+             else if(guerreiro1.vida<=0&&guerreiro2.vida>0&&arena.turno!=0){
                 binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 2 no turno ${arena.turno}!"
                 arena.turno = 0
                 arena.limpaLista()
