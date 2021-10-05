@@ -9,8 +9,6 @@ class BatalhaRPGActivity : AppCompatActivity() {
     private val guerreiro1 = Guerreiro("",0,0,0,0)
     private val guerreiro2 = Guerreiro("",0,0,0,0)
     private val arena = Arena(guerreiro1,guerreiro2)
-    private var vidaAtualG1:Int=0
-    private var vidaAtualG2:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,17 +17,14 @@ class BatalhaRPGActivity : AppCompatActivity() {
         binding.boxBatalhaAtila.setOnCheckedChangeListener { compoundButton, b ->
            binding.boxBatalhaGK.isChecked = false
            binding.boxBatalhaLeonidas.isChecked = false
-           //binding.boxBatalhaAtila.isChecked = true
         }
         binding.boxBatalhaLeonidas.setOnCheckedChangeListener { compoundButton, b ->
             binding.boxBatalhaGK.isChecked = false
             binding.boxBatalhaAtila.isChecked = false
-            //binding.boxBatalhaLeonidas.isChecked = true
         }
         binding.boxBatalhaGK.setOnCheckedChangeListener { compoundButton, b ->
             binding.boxBatalhaLeonidas.isChecked = false
             binding.boxBatalhaAtila.isChecked = false
-            //binding.boxBatalhaGK.isChecked = true
         }
 
 
@@ -59,14 +54,17 @@ class BatalhaRPGActivity : AppCompatActivity() {
                 guerreiro1.forcaExtra = binding.txtBatalhaForca.text.toString().toInt()
                 guerreiro1.defesaExtra = binding.txtBatalhaDefesa.text.toString().toInt()
                 guerreiro1.destrezaExtra = binding.txtBatalhaDestreza.text.toString().toInt()
+                guerreiro1.carregarHabilidades()
 
                 binding.txtBatalhaGuerreiro1.text = "${binding.txtBatalhaNome.text}"
+
                 if(binding.boxBatalhaAtila.isChecked==true) {
                     guerreiro2.nome = "Átila"
                     guerreiro2.vidaExtra = 15
                     guerreiro2.forcaExtra = 45
                     guerreiro2.defesaExtra = 45
                     guerreiro2.destrezaExtra = 25
+                    guerreiro2.carregarHabilidades()
 
                     binding.txtBatalhaGuerreiro2.text = guerreiro2.nome
                 }else if(binding.boxBatalhaLeonidas.isChecked==true){
@@ -75,6 +73,7 @@ class BatalhaRPGActivity : AppCompatActivity() {
                     guerreiro2.forcaExtra = 45
                     guerreiro2.defesaExtra = 20
                     guerreiro2.destrezaExtra = 20
+                    guerreiro2.carregarHabilidades()
 
                     binding.txtBatalhaGuerreiro2.text = guerreiro2.nome
                 }else if(binding.boxBatalhaGK.isChecked==true){
@@ -83,18 +82,17 @@ class BatalhaRPGActivity : AppCompatActivity() {
                     guerreiro2.forcaExtra = 20
                     guerreiro2.defesaExtra = 20
                     guerreiro2.destrezaExtra = 45
+                    guerreiro2.carregarHabilidades()
 
                     binding.txtBatalhaGuerreiro2.text = guerreiro2.nome
                 }
 
-                vidaAtualG1 = guerreiro1.vida(guerreiro1.vidaExtra)
-                vidaAtualG2 = guerreiro2.vida(guerreiro2.vidaExtra)
+                binding.barGuerreiro1.max = guerreiro1.vida
+                binding.barGuerreiro2.max = guerreiro1.vida
 
-                binding.barGuerreiro1.max = vidaAtualG1
-                binding.barGuerreiro2.max = vidaAtualG2
+                binding.barGuerreiro1.progress = guerreiro1.vida
+                binding.barGuerreiro2.progress = guerreiro1.vida
 
-                binding.barGuerreiro1.progress = vidaAtualG1
-                binding.barGuerreiro2.progress = vidaAtualG2
 
                 binding.txtBatalhaMensagens.text = "INICIO DA LUTA, Clique em ATACAR!!"
             }
@@ -102,27 +100,24 @@ class BatalhaRPGActivity : AppCompatActivity() {
         }
         binding.btBatalhaProximoTurno.setOnClickListener {
 
-            if(vidaAtualG1>0&&vidaAtualG2>0) {
+            if(guerreiro1.vida>0&&guerreiro2.vida>0) {
+
                 arena.batalha(guerreiro1, guerreiro2)
+
                 binding.txtBatalhaResultadoG1.text = arena.resultadoG1()
                 binding.txtBatalhaResultadoG2.text = arena.resultadoG2()
+                binding.barGuerreiro1.progress = guerreiro1.vida
+                binding.barGuerreiro2.progress = guerreiro2.vida
 
-                if (arena.danosG1 < 0) {
-                    vidaAtualG1 = vidaAtualG1 + arena.danosG1
-                    binding.barGuerreiro1.progress = vidaAtualG1
-                }
-                if (arena.danosG2 < 0) {
-                    vidaAtualG2 = vidaAtualG2 + arena.danosG2
-                    binding.barGuerreiro2.progress = vidaAtualG2
-                }
+                //binding.txtBatalhaMensagens.text = "${guerreiro1.vida} ${guerreiro2.vida}"
                 binding.txtBatalhaMensagens.text = "TURNO ${arena.turno}!"
 
-            }else if(vidaAtualG2<0&&vidaAtualG1>0&&arena.turno!=0){
+            }else if(guerreiro2.vida<0&&guerreiro1.vida>0&&arena.turno!=0){
                 binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 1 no turno ${arena.turno}!"
                 arena.turno = 0
                 arena.limpaLista()
             }
-             else if(vidaAtualG1<0&&vidaAtualG2>0&&arena.turno!=0){
+             else if(guerreiro1.vida<0&&guerreiro2.vida>0&&arena.turno!=0){
                 binding.txtBatalhaMensagens.text = "VITÓRIA DO Guerreiro 2 no turno ${arena.turno}!"
                 arena.turno = 0
                 arena.limpaLista()

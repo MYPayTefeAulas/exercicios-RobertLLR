@@ -3,29 +3,47 @@ package com.example.exercicios
 class Arena(guerreiro1:Guerreiro,guerreiro2:Guerreiro) {
     private val listaBatalhaG1 = mutableListOf<String>()
     private val listaBatalhaG2 = mutableListOf<String>()
-     var danosG1:Int=0
-     var danosG2:Int=0
-     var turno:Int=0
+    var danosG1:Int = 0
+    var danosG2:Int = 0
+    var turno  :Int = 0
+    var testeEsquivaG1:Boolean=false
+    var testeEsquivaG2:Boolean=false
     private var ataqueG1:Int=0
     private var ataqueG2:Int=0
     private var defesaG1:Int=0
     private var defesaG2:Int=0
 
     fun batalha(guerreiro1: Guerreiro,guerreiro2: Guerreiro) {
-        ataqueG1 = guerreiro1.atacar(guerreiro1.forcaExtra,guerreiro1.destrezaExtra)
-        ataqueG2 = guerreiro2.atacar(guerreiro2.forcaExtra,guerreiro2.destrezaExtra)
-        defesaG1 = guerreiro1.defender(guerreiro1.defesaExtra,guerreiro1.destrezaExtra)
-        defesaG2 = guerreiro2.defender(guerreiro2.defesaExtra,guerreiro2.destrezaExtra)
+        ataqueG1 = guerreiro1.atacar()
+        ataqueG2 = guerreiro2.atacar()
+        defesaG1 = guerreiro1.defender()
+        defesaG2 = guerreiro2.defender()
+
         danosG1  = defesaG1 - ataqueG2
         danosG2  = defesaG2 - ataqueG1
 
-        listaBatalhaG1.add(0,"Danos Recebido: $danosG1\n\n")
+        if(guerreiro1.esquiva()==false) {
+            guerreiro1.perderVida(danosG1)
+            listaBatalhaG1.add(0,"Danos Recebido: $danosG1\n\n")
+        }
+        else{
+            listaBatalhaG1.add(0,"Danos Recebido: $danosG1, Esquivou\n\n")
+        }
+
         listaBatalhaG1.add(0,"Defesa: $defesaG1\n")
         listaBatalhaG1.add(0,"Ataque: $ataqueG1\n")
+        listaBatalhaG1.add(0,"Vida: ${guerreiro1.vida}\n")
 
-        listaBatalhaG2.add(0,"Danos Recebido: $danosG2\n\n")
+        if(guerreiro2.esquiva()==false) {
+            guerreiro2.perderVida(danosG2)
+            listaBatalhaG2.add(0,"Danos Recebido: $danosG2\n\n")
+        }else{
+            listaBatalhaG2.add(0,"Danos Recebido: $danosG2, Esquivou\n\n")
+        }
         listaBatalhaG2.add(0,"Defesa: $defesaG2\n")
         listaBatalhaG2.add(0,"Ataque: $ataqueG2\n")
+        listaBatalhaG2.add(0,"Vida: ${guerreiro2.vida}\n")
+
         turno++
     }
     fun resultadoG1():String{

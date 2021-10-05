@@ -7,50 +7,38 @@ class Guerreiro(
     var defesaExtra:Int,
     var destrezaExtra:Int
 ) {
+    var vida:Int = 100
+    var forca:Int = 30
+    var defesa:Int = 30
+    var destreza:Int = 30
 
-    fun vida(vidaExtra: Int):Int {
-        var vida:Int
-        vida=vidaExtra+100
-        return vida
+    fun carregarHabilidades(){
+        vida     += vidaExtra
+        forca    += forcaExtra
+        defesa   += defesaExtra
+        destreza += destrezaExtra
     }
-
-    fun forca(forcaExtra: Int):Int {
-        var forca:Int
-        forca = forcaExtra+30
-        return forca
-    }
-    fun defesa(defesaExtra: Int):Int {
-        var defesa:Int
-        defesa = defesaExtra+30
-        return defesa
-    }
-    fun destreza(destrezaExtra: Int):Int {
-        var destreza:Int
-        destreza = destrezaExtra+30
-        return destreza
-    }
-    fun atacar(forcaExtra: Int,destrezaExtra: Int):Int {
+    fun atacar():Int {
         var ataque:Int
-        ataque=forca(forcaExtra)*destreza(destrezaExtra)/100
+        ataque=forca*destreza/100
         ataque=(1..ataque).random()
         return ataque
     }
-    fun defender(defesaExtra: Int,destrezaExtra: Int):Int {
-        var defesa:Int
-        defesa=defesa(defesaExtra)*destreza(destrezaExtra)/100
-        defesa=(1..defesa).random()
-        return defesa
+    fun defender():Int {
+        var def:Int
+        def=defesa*destreza/100
+        def=(1..def).random()
+        return def
     }
-    fun calculoVida(danos:Int,vidaAtual:Int):Int {
-        return vidaAtual - danos
+    fun perderVida(danos:Int){
+        if(danos<0) vida = vida+danos
     }
     fun esquiva():Boolean {
-    return true
+        var esquivar:Int
+        esquivar = (1..(100-defesaExtra)).random()+defesaExtra
+        if(esquivar>=70) return true
+    return false
     }
-    fun calculodestreza() {
 
-    }
-    fun somaPontosExtra(vidaExtra:Int,forcaExtra:Int,defesaExtra:Int,destrezaExtra:Int):Int{
-        return vidaExtra+forcaExtra+defesaExtra+destrezaExtra
-    }
+
 }
