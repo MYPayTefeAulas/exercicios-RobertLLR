@@ -3,7 +3,12 @@ package com.example.exercicios
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.exercicios.agenda.AgendaActivity
+import com.example.exercicios.batalha.BatalhaRPGActivity
 import com.example.exercicios.databinding.ActivityMainBinding
+import com.example.exercicios.greeter.Greeter1Activity
+import com.example.exercicios.jogar_dados.DadosActivity
+import com.example.exercicios.pessoa.PessoasActivity2
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

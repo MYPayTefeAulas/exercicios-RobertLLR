@@ -1,9 +1,9 @@
-package com.example.exercicios
+package com.example.exercicios.jogar_dados
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.exercicios.databinding.ActivityDadosBinding
-import com.example.exercicios.databinding.ActivityGreeter1Binding
+import com.example.exercicios.jogar_dados.Dados
 
 class DadosActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDadosBinding

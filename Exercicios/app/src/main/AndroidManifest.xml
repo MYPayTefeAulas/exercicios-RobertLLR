@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Exercicios">
         <activity
-            android:name=".BatalhaRPGActivity"
+            android:name=".batalha.BatalhaRPGActivity"
             android:exported="true" />
         <activity
-            android:name=".AgendaActivity"
+            android:name=".agenda.AgendaActivity"
             android:exported="true" />
         <activity
-            android:name=".DadosActivity"
+            android:name=".jogar_dados.DadosActivity"
             android:exported="true" />
         <activity
-            android:name=".Greeter1Activity"
+            android:name=".greeter.Greeter1Activity"
             android:exported="true" />
         <activity
-            android:name=".PessoasActivity2"
+            android:name=".pessoa.PessoasActivity2"
             android:exported="true" />
         <activity
             android:name=".FrutasActivity"

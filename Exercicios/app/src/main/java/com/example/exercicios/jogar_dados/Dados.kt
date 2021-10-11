@@ -1,4 +1,4 @@
-package com.example.exercicios
+package com.example.exercicios.jogar_dados
 
 import java.util.Random
 

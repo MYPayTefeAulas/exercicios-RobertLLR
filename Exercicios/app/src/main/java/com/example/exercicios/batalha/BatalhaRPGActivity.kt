@@ -1,4 +1,4 @@
-package com.example.exercicios
+package com.example.exercicios.batalha
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

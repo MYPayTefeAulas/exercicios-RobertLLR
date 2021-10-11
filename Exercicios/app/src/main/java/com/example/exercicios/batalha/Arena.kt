@@ -1,6 +1,6 @@
-package com.example.exercicios
+package com.example.exercicios.batalha
 
-class Arena(guerreiro1:Guerreiro,guerreiro2:Guerreiro) {
+class Arena(guerreiro1: Guerreiro, guerreiro2: Guerreiro) {
     val listaBatalhaG1 = mutableListOf<String>()
     val listaBatalhaG2 = mutableListOf<String>()
     var danosG1:Int = 0
@@ -11,7 +11,7 @@ class Arena(guerreiro1:Guerreiro,guerreiro2:Guerreiro) {
     private var defesaG1:Int=0
     private var defesaG2:Int=0
 
-    fun batalha(guerreiro1: Guerreiro,guerreiro2: Guerreiro) {
+    fun batalha(guerreiro1: Guerreiro, guerreiro2: Guerreiro) {
         ataqueG1 = guerreiro1.atacar()
         ataqueG2 = guerreiro2.atacar()
         defesaG1 = guerreiro1.defender()

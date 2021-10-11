@@ -1,8 +1,9 @@
-package com.example.exercicios
+package com.example.exercicios.pessoa
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.exercicios.MainActivity
 import com.example.exercicios.databinding.ActivityPessoas2Binding
 
 class PessoasActivity2 : AppCompatActivity() {

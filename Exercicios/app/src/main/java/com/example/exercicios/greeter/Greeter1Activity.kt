@@ -1,8 +1,8 @@
-package com.example.exercicios
+package com.example.exercicios.greeter
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.exercicios.pessoa.Pessoa
 import com.example.exercicios.databinding.ActivityGreeter1Binding
 
 class Greeter1Activity : AppCompatActivity() {
@@ -68,10 +68,12 @@ class Greeter1Activity : AppCompatActivity() {
                 if (erroSalvar == false&&binding.txtEntradaNome.text.toString()!="") {
                     if(listaNomes2.size!=0) listaNomes2.removeAt(listaNomes2.size-1)
 
-                    listaNomes2.add(Pessoa(
+                    listaNomes2.add(
+                        Pessoa(
                         binding.txtEntradaNome.text.toString(),
                         binding.txtEntradaIdade.text.toString().toInt()
-                    ))
+                    )
+                    )
                     listaNomes2.add(Pessoa("Fim da lista, aperte próximo para voltar ao inicio",0))
                     binding.txtEntradaNome.text.clear()
                     binding.txtEntradaIdade.text.clear()

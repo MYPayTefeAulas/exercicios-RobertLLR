@@ -1,4 +1,4 @@
-package com.example.exercicios
+package com.example.exercicios.agenda
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity

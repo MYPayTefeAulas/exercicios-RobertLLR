@@ -1,4 +1,4 @@
-package com.example.exercicios
+package com.example.exercicios.batalha
 
 class Guerreiro(
     var nome         :String,

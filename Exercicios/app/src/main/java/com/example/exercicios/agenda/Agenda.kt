@@ -1,4 +1,4 @@
-package com.example.exercicios
+package com.example.exercicios.agenda
 
 
 class Agenda {
@@ -11,7 +11,7 @@ class Agenda {
         listaAgenda.removeAt(indiceAtual)
         indiceAtual--
     }
-    fun buscarAg(contato:String):PessoaAg{
+    fun buscarAg(contato:String): PessoaAg {
         indiceAtual = 0
         for (lista in listaAgenda) {
             if(contato==lista.nome||contato==lista.telefone) return listaAgenda[indiceAtual]
@@ -19,14 +19,14 @@ class Agenda {
         }
         return listaAgenda[indiceAtual]
     }
-    fun salvarAg(salvarPessoa:PessoaAg){
+    fun salvarAg(salvarPessoa: PessoaAg){
         listaAgenda.add(salvarPessoa)
         indiceAtual++
     }
-    fun editarAg(contato:PessoaAg){
+    fun editarAg(contato: PessoaAg){
         listaAgenda[indiceAtual]=contato
     }
-    fun proximoAg() : PessoaAg{
+    fun proximoAg() : PessoaAg {
        if(indiceAtual == listaAgenda.size -1){
            indiceAtual = 0
        } else {
@@ -34,7 +34,7 @@ class Agenda {
        }
         return listaAgenda[indiceAtual]
     }
-    fun verificaContatoAg(contato:PessoaAg) :String{
+    fun verificaContatoAg(contato: PessoaAg) :String{
         var testePessoaAg:String = "false"
 
         for (lista in listaAgenda) {
