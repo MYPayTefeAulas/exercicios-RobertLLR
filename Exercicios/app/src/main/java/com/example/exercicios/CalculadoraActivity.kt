@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.exercicios.databinding.ActivityCalculadoraBinding
-import com.example.exercicios.databinding.ActivityMainBinding
-import kotlin.math.pow
+import java.lang.RuntimeException
+import kotlin.math.*
 
 class CalculadoraActivity : AppCompatActivity() {
 
@@ -14,195 +14,199 @@ class CalculadoraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var somaCaracter  = ""
+        var totalCaracter = ""
+        var resultado = ""
+
+        setTitle("Calculadora")
         binding = ActivityCalculadoraBinding.inflate(layoutInflater)
 
-        var operacao:String = ""
-        var numero1 :String = ""
-        var numero2 :String = ""
-
-        binding.btLimpar.setOnClickListener {
-            numero1  = ""
-            numero2  = ""
-            operacao = ""
-            binding.txtTela.text =  ""
-        }
-        binding.btPorcentagem.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                operacao = "%"
-                binding.txtTela.text = binding.txtTela.text.toString() + "%"
-            }
-        }
-        binding.btPotencia.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                operacao = "^"
-                binding.txtTela.text = binding.txtTela.text.toString() + "^"
-            }
-        }
-        binding.btMultiplicacao.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                operacao = "*"
-                binding.txtTela.text = binding.txtTela.text.toString() + "*"
-            }
-        }
-        binding.bt7.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "7"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "7"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
-        }
-        binding.bt8.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "8"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "8"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
-        }
-        binding.bt9.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "9"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "9"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
-        }
-        binding.btDivisao.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                operacao = "/"
-                binding.txtTela.text = binding.txtTela.text.toString() + "/"
-            }
-        }
-        binding.bt4.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "4"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "4"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
-        }
-        binding.bt5.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "5"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "5"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
-        }
-        binding.bt6.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "6"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "6"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
-        }
-        binding.btSubtracao.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                operacao = "-"
-                binding.txtTela.text = binding.txtTela.text.toString() + "-"
-            }
-        }
         binding.bt1.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "1"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "1"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
+            somaCaracter += "1"
+            binding.txtEntrada.setText(somaCaracter)
         }
         binding.bt2.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "2"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "2"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
+            somaCaracter += "2"
+            binding.txtEntrada.setText(somaCaracter)
         }
         binding.bt3.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "3"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "3"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
+            somaCaracter += "3"
+            binding.txtEntrada.setText(somaCaracter)
         }
-        binding.btSoma.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                operacao = "+"
-                binding.txtTela.text = binding.txtTela.text.toString() + "+"
-            }
+        binding.bt4.setOnClickListener {
+            somaCaracter += "4"
+            binding.txtEntrada.setText(somaCaracter)
         }
-        binding.btMaisMenos.setOnClickListener {
-            if (operacao != "+" && operacao != "-" && operacao != "*" && operacao != "/" && operacao != "^" && operacao != "%") {
-                val valor = binding.txtTela.text.toString()
-                val numero1= (valor.toDouble()*(-1.0)).toString()
-                binding.txtTela.text = numero1
-            }
+        binding.bt5.setOnClickListener {
+            somaCaracter += "5"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.bt6.setOnClickListener {
+            somaCaracter += "6"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.bt7.setOnClickListener {
+            somaCaracter += "7"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.bt8.setOnClickListener {
+            somaCaracter += "8"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.bt9.setOnClickListener {
+            somaCaracter += "9"
+            binding.txtEntrada.setText(somaCaracter)
         }
         binding.bt0.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "0"
-            if (operacao == "+" || operacao == "-" || operacao == "*" || operacao == "/" || operacao == "^" || operacao == "%") {
-                numero2 = numero2 + "0"
-            }else {
-                numero1 = binding.txtTela.text.toString()
-            }
+            somaCaracter += "0"
+            binding.txtEntrada.setText(somaCaracter)
         }
         binding.btPonto.setOnClickListener {
-            binding.txtTela.text = binding.txtTela.text.toString() + "."
+            somaCaracter += "."
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btCalculadoraParetesEsq.setOnClickListener {
+            somaCaracter += "("
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btCalculadoraParentesDir.setOnClickListener {
+            somaCaracter += ")"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btMultiplicacao.setOnClickListener {
+            somaCaracter += "*"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btDivisao.setOnClickListener {
+            somaCaracter += "/"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btSubtracao.setOnClickListener {
+            somaCaracter += "-"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btSoma.setOnClickListener {
+            somaCaracter += "+"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btPotencia.setOnClickListener {
+            somaCaracter += "^"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btRaiz.setOnClickListener {
+            somaCaracter += "sqrt"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btTan.setOnClickListener {
+            somaCaracter += "tan"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btCos.setOnClickListener {
+            somaCaracter += "cos"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btSen.setOnClickListener {
+            somaCaracter += "sen"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+
+
+        binding.btPorcentagem.setOnClickListener {
+            somaCaracter += "%"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+        binding.btLog.setOnClickListener {
+            somaCaracter += "log"
+            binding.txtEntrada.setText(somaCaracter)
+        }
+
+
+        binding.btLimpar.setOnClickListener {
+            somaCaracter = ""
+            binding.txtEntrada.setText("0.0")
+        }
+        binding.btLimpaHistorico.setOnClickListener {
+            resultado = ""
+            binding.txtTela.text = resultado
         }
         binding.btIgual.setOnClickListener {
-            var resultado : Double = 0.0
-            if (operacao == "+") {
-                resultado = numero1.toDouble() + numero2.toDouble()
-                numero1 = resultado.toString()
-                numero2 = ""
-                binding.txtTela.text = resultado.toString()
-                operacao = ""
-            }
-            if (operacao == "-") {
-                resultado = numero1.toDouble() - numero2.toDouble()
-                numero1 = resultado.toString()
-                numero2 = ""
-                binding.txtTela.text = resultado.toString()
-                operacao = ""
-            }
-            if (operacao == "*") {
-                resultado = numero1.toDouble() * numero2.toDouble()
-                numero1 = resultado.toString()
-                numero2 = ""
-                binding.txtTela.text = resultado.toString()
-                operacao = ""
-            }
-            if (operacao == "/") {
-                resultado = numero1.toDouble() / numero2.toDouble()
-                numero1 = resultado.toString()
-                numero2 = ""
-                binding.txtTela.text = resultado.toString()
-                operacao = ""
-            }
-            if (operacao == "^") {
-                resultado = numero1.toDouble().pow(numero2.toDouble())
-                numero1 = resultado.toString()
-                numero2 = ""
-                binding.txtTela.text = resultado.toString()
-                operacao = ""
-            }
-            if (operacao == "%") {
-                resultado = numero1.toDouble()*numero2.toDouble()/100
-                numero1 = resultado.toString()
-                numero2 = ""
-                binding.txtTela.text = resultado.toString()
-                operacao = ""
-            }
+            totalCaracter = binding.txtEntrada.text.toString()
+            resultado += totalCaracter+" = "+eval(totalCaracter).toString() + "\n"
+            binding.txtTela.text = resultado
+        }
 
-        }
-        binding.btVoltarCalculadora.setOnClickListener {
-            val i = Intent (this@CalculadoraActivity, MainActivity :: class.java)
-            startActivity(i)
-        }
 
         setContentView(binding.root)
+    }
+    fun eval(str: String): Double {
+        return object : Any() {
+            var pos = -1
+            var ch = 0
+            fun nextChar() {
+                ch = if (++pos < str.length) str[pos].toInt() else -1
+            }
+
+            fun eat(charToEat: Int): Boolean {
+                while (ch == ' '.toInt()) nextChar()
+                if (ch == charToEat) {
+                    nextChar()
+                    return true
+                }
+                return false
+            }
+
+            fun parse(): Double {
+                nextChar()
+                val x = parseExpression()
+                if (pos < str.length) throw RuntimeException("Unexpected: " + ch.toChar())
+                return x
+            }
+
+            fun parseExpression(): Double {
+                var x = parseTerm()
+                while (true) {
+                    if (eat('+'.toInt())) x += parseTerm() // addition
+                    else if (eat('-'.toInt())) x -= parseTerm() // subtraction
+                    else return x
+                }
+            }
+
+            fun parseTerm(): Double {
+                var x = parseFactor()
+                while (true) {
+                    if (eat('*'.toInt())) x *= parseFactor() // multiplication
+                    else if (eat('/'.toInt())) x /= parseFactor() // division
+                    else if (eat('%'.toInt())) x = (x/100)*parseFactor() // porcentagem
+                    else return x
+                }
+            }
+
+            fun parseFactor(): Double {
+                if (eat('+'.toInt())) return parseFactor() // unary plus
+                if (eat('-'.toInt())) return -parseFactor() // unary minus
+                var x: Double
+                val startPos = pos
+                if (eat('('.toInt())) { // parentheses
+                    x = parseExpression()
+                    eat(')'.toInt())
+                } else if (ch >= '0'.toInt() && ch <= '9'.toInt() || ch == '.'.toInt()) {
+                    while (ch >= '0'.toInt() && ch <= '9'.toInt() || ch == '.'.toInt()) nextChar()
+                    x = str.substring(startPos, pos).toDouble()
+                } else if (ch >= 'a'.toInt() && ch <= 'z'.toInt()) {
+                    while (ch >= 'a'.toInt() && ch <= 'z'.toInt()) nextChar()
+                    val func = str.substring(startPos, pos)
+                    x = parseFactor()
+                    x =
+                        if      (func == "sqrt") sqrt(x)
+                        else if (func == "log")  log10(x)
+                        else if (func == "sin")  sin(x)
+                        else if (func == "cos")  cos(x)
+                        else if (func == "tan")  tan(x)
+                        else  throw RuntimeException("Unknown function: $func")
+                } else {throw RuntimeException("Unexpected: " + ch.toChar())}
+                if (eat('^'.toInt())) x = x.pow(parseFactor())
+                return x
+            }
+        }.parse()
     }
 }
