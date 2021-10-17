@@ -1,7 +1,7 @@
 package com.example.exercicios.agenda
 
 
-class Agenda {
+object Agenda {
     private val listaAgenda = mutableListOf<PessoaAg>()
     private var indiceAtual = -1
 

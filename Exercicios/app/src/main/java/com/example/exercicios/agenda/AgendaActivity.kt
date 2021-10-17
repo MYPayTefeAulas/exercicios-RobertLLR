@@ -7,7 +7,7 @@ import com.example.exercicios.databinding.ActivityAgendaBinding
 
 class AgendaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAgendaBinding
-    private val agenda = Agenda()
+    //private val agenda = Agenda()
     private var editar : Boolean = false
     private var contatoAtual = PessoaAg(nome = "",telefone = "0")
 
@@ -31,17 +31,17 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgSaida.text = "Telefone vazio, digite o telefone de um contato para apagá-lo"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
             }else {
-                if(agenda.verificaContatoAg(contatoAtual)=="false") {
+                if(Agenda.verificaContatoAg(contatoAtual)=="false") {
                     binding.txtAgSaida.text = "Contato salvo"
                     binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
 
-                    agenda.salvarAg(contatoAtual)
-                }else if(agenda.verificaContatoAg(contatoAtual)==contatoAtual.nome&&editar==false) {
+                    Agenda.salvarAg(contatoAtual)
+                }else if(Agenda.verificaContatoAg(contatoAtual)==contatoAtual.nome&&editar==false) {
                     binding.txtAgSaida.text = "O nome ${contatoAtual.nome} já consta na lista"
-                }else if(agenda.verificaContatoAg(contatoAtual)==contatoAtual.telefone&&editar==false){
+                }else if(Agenda.verificaContatoAg(contatoAtual)==contatoAtual.telefone&&editar==false){
                     binding.txtAgSaida.text = "O telefone ${contatoAtual.telefone} já consta na lista"
-                }else if(editar==true&&agenda.listaVazia()==false){
-                    agenda.editarAg(contatoAtual)
+                }else if(editar==true&&Agenda.listaVazia()==false){
+                    Agenda.editarAg(contatoAtual)
                     binding.txtAgSaida.text = "Contato modificado"
                 }
             }
@@ -56,7 +56,7 @@ class AgendaActivity : AppCompatActivity() {
                 binding.txtAgSaida.text = "Telefone vazio, CLIQUE EM PROXIMO ANTES DE DELETAR"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
             }else if(editar==true){
-                agenda.deletarAg()
+                Agenda.deletarAg()
                 binding.txtAgSaida.text = "Contato deletado"
                 binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
             }
@@ -64,28 +64,28 @@ class AgendaActivity : AppCompatActivity() {
         }
 
         binding.btAgProximo.setOnClickListener {
-            if(agenda.listaVazia()==true){
+            if(Agenda.listaVazia()==true){
                 binding.txtAgSaida.text = "Agenda esta vazia"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
             }else {
-                contatoAtual = agenda.proximoAg()
+                contatoAtual = Agenda.proximoAg()
                 binding.txtAgNome.setText(contatoAtual.nome)
                 binding.txtAgTelefone.setText(contatoAtual.telefone)
             }
             editar = true
-            binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
+            binding.txtAgSaida.text = "Contato ${Agenda.numContato()+1}"
             binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
         }
 
         binding.btAgBuscar.setOnClickListener {
-            if(agenda.listaVazia()){
+            if(Agenda.listaVazia()){
                 binding.txtAgSaida.text = "Agenda esta vazia"
                 binding.txtAgSaida.setTextColor(Color.rgb(201,103,103))
-            }else if(agenda.existenciaContato(binding.txtAgBuscar.text.toString())) {
-                contatoAtual = agenda.buscarAg(binding.txtAgBuscar.text.toString())
+            }else if(Agenda.existenciaContato(binding.txtAgBuscar.text.toString())) {
+                contatoAtual = Agenda.buscarAg(binding.txtAgBuscar.text.toString())
                 binding.txtAgNome.setText(contatoAtual.nome)
                 binding.txtAgTelefone.setText(contatoAtual.telefone)
-                binding.txtAgSaida.text = "Contato ${agenda.numContato()+1}"
+                binding.txtAgSaida.text = "Contato ${Agenda.numContato()+1}"
                 binding.txtAgSaida.setTextColor(Color.rgb(0,0,255))
                 binding.txtAgTest.text = "Nome: ${contatoAtual.nome}, telefone: ${contatoAtual.telefone}"
             }else {

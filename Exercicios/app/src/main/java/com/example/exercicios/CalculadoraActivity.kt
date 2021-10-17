@@ -109,8 +109,6 @@ class CalculadoraActivity : AppCompatActivity() {
             somaCaracter += "sen"
             binding.txtEntrada.setText(somaCaracter)
         }
-
-
         binding.btPorcentagem.setOnClickListener {
             somaCaracter += "%"
             binding.txtEntrada.setText(somaCaracter)
@@ -119,8 +117,6 @@ class CalculadoraActivity : AppCompatActivity() {
             somaCaracter += "log"
             binding.txtEntrada.setText(somaCaracter)
         }
-
-
         binding.btLimpar.setOnClickListener {
             somaCaracter = ""
             binding.txtEntrada.setText("0.0")
@@ -131,7 +127,12 @@ class CalculadoraActivity : AppCompatActivity() {
         }
         binding.btIgual.setOnClickListener {
             totalCaracter = binding.txtEntrada.text.toString()
-            resultado += totalCaracter+" = "+eval(totalCaracter).toString() + "\n"
+            try {
+                resultado += totalCaracter+" = "+eval(totalCaracter).toString() + "\n"
+            } catch (erro:Exception){
+                resultado += erro.toString() +"\n"
+            }
+
             binding.txtTela.text = resultado
         }
 

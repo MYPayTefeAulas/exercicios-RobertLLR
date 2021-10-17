@@ -1,6 +1,6 @@
 package com.example.exercicios.batalha
 
-class Arena(guerreiro1: Guerreiro, guerreiro2: Guerreiro) {
+object Arena {
     val listaBatalhaG1 = mutableListOf<String>()
     val listaBatalhaG2 = mutableListOf<String>()
     var danosG1:Int = 0
